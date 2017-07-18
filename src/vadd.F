@@ -1,13 +1,13 @@
        subroutine vadd(vrhs , v)
 c
+      use bc
+
       implicit double precision (a-h,o-z)
 c
 c.... deactivate above card(s) for single precision operation
 c
 #include<common.h>
-#include<bc.h>
        dimension vrhs(*) , v(*) 
-c
 c
        do 100 j = 1 , ndof
        do 100 i = 1 , numnp
@@ -21,8 +21,10 @@ c
 c   fix up v for wrap-around b.c. 
 c 
       if (nwrap .ne. 0 ) then
-        do 200 n=1,2*nwrap+2
-          iwrap = nEGdf - 2*nwrap-2+n
+cc        do 200 n=1,2*nwrap+2
+cc          iwrap = 2*numnp - 2*nwrap-2+n
+        do 200 n=1,(2*nwrap)
+          iwrap = 2*numnp - 2*nwrap+n
           v(iwrap) = v(n)
 200     continue
       end if

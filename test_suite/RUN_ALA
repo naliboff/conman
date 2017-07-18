@@ -1,0 +1,7 @@
+#!/bin/bash 
+date > log_Date
+uname -n       > log_machine
+ls -l ../conman > log_bin
+for dir in  ./test_ala_*  ; do
+   ./run_us.bash $dir &
+done

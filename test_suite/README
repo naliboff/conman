@@ -1,0 +1,8 @@
+RUN_TEST_SUITE runs the tests in each directory using the source in 
+ the directory above (../conman)
+
+CLEAN_TEST_SUITE deletes the output programs (should be unnnecessary but safe)
+
+make_table.bash - reads the output and create a latex file (blankenbach.tex), 
+ then compile it and creates a postscript file: blankenbach.ps  You may need to edit
+ the locations of latex and dvips.

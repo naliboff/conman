@@ -7,9 +7,10 @@ c
 c.... deactivate above card(s) for single precision operation
 c
       logical lzero,lskip
-      dimension name(11),dva(ndof,1)
-      common /io    / iin, igeom, iout , itsout , itout , imout , 
-     &                irsin , irsout
+      dimension name(11),dva(ndof,numnp)
+        common /io    / iin,    igeom, iout , itsout , itout , imout, 
+     &                  irsin , irsout, icomp, igeoid
+c     &                , ivisc , ivt  ,  ivin  , ivout
 c
       nn = 0
       lskip = .true.

@@ -1,0 +1,7 @@
+# 
+split -l 10203 temp.100 
+mv xab tempab
+split -10203 stress.100 
+mv xab etaab
+./plot_temp_GMT tempab etaab
+

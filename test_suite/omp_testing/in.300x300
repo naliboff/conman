@@ -1,0 +1,48 @@
+ 300 x 300 el. plate problem from Lowman et al.   2001: IFCMT,DELNXTLN
+ #Nds  sdm dof   X    Z prc ck echo rrst wrst nus tdvf tseq nelg sky wr
+  90601  2   2 300  300   2  1    1    0    1 602    1    1    1   1  0  4  3
+ time step information
+    200   1  1.0  1.0  0.100000
+ output information
+00200  00200  00200  00200 1.0000 0.000001 0.005 1.5
+ velocity boundary condition flags: IFCMT,DELNXTLN
+ bnode   enode   incr bcf1 bcf2
+      1  90301    301    0    1
+  90301  90601      1    1    0
+      1    301      1    1    0
+    301  90601    301    0    1
+      1      1      1    1    1
+    301    301      1    1    1
+  90301  90301      1    1    1
+  90601  90601      1    1    1
+      0      0      0    0    0
+ temperature boundary condition flags
+      1  90301    301    1
+    301  90601    301    1
+      0      0      0    0
+ bndy info (top - bottom rows)
+      1  90301    301
+    301  90601    301
+      0      0      0
+ bndy info (2nd from top - 2nd from bottom rows)
+      2  90302    301
+    300  90600    301
+      0      0      0
+ initial condition information
+0.001  1.0 1.0 0.0000   0.0000 1000.0000
+ element information
+ 2  90000 4 4 1 2 0 5 0 0
+ viscosity
+  1.0e0  
+ penalty number
+  0.1E+08 
+ diffusivity (always one)
+    1.0   
+ Rayleigh number
+  1.0e+04  
+ internal heating parameter
+    0.0
+    0.0
+    0.0   
+    1.0   
+    1.0   

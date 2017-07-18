@@ -8,10 +8,12 @@ c
 c
 c.... deactivate above card(s) for single precision operation
 c
-      dimension id(ndof,1)
+      dimension id(ndof,*)
 c
-      common /io    / iin,igeom,iout,itsout,itout,imout,
-     &                irsin,irsout
+        common /io    / iin,    igeom, iout , itsout , itout , imout, 
+     &                  irsin , irsout, icomp, igeoid
+c     &                , ivisc , ivt  ,  ivin  , ivout
+
       logical pflag
 c
 c
@@ -65,7 +67,7 @@ c
  1000 format(' ',' n o d a l   b o u n d a r y   c o n d i t i o n   c o
      & d e s'///
      & 5x,' node no.',3x,6(6x,'dof',i1:)//)
- 2000 format(6x,i5,5x,6(5x,i5))
+ 2000 format(6x,i7,5x,6(5x,i7))
 c
       end
       
@@ -84,9 +86,10 @@ c
 c
 c.... deactivate above card(s) for single precision operation
 c
-      dimension ia(m,1),ib(13)
-      common /io    / iin,igeom,iout,itsout,itout,imout,
-     &                irsin,irsout
+      dimension ia(m,*), ib(13)
+      common /io    / iin,    igeom, iout , itsout , itout , imout, 
+     &                irsin , irsout, icomp, igeoid
+c     &           , ivisc , ivt  ,               itop  , ibot
 c
   100 continue
 1     read(iin,*,err=1,end=998) n,ne,ng,(ib(i),i=1,m)
@@ -116,7 +119,7 @@ c
 c
 c.... deactivate above card(s) for single precision operation
 c
-      dimension ia(1),ib(1)
+      dimension ia(*),ib(*)
 c
       do 100 i=1,n
       ia(i)=ib(i)

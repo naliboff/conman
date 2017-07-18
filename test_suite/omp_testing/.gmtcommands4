@@ -1,0 +1,13 @@
+# GMT common arguments shelf
+-Ba0.01f0.005:Non-dimensional time:/a2f1:Heat flux:WSen
+-JX6/6
+-R0/0.001/0/15
+-X3
+-x0
+-Y13
+-y0
+-jX6/6
+EOF
+F
+X16/4
+EOF

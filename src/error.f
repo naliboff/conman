@@ -36,7 +36,7 @@ c
 c.... print the time and memory statistics and exit
 c
       call timer ('end     ')
-      call mmprint(iout)
+c      call mmprint(iout)
 c
 c.... if within processing, print the last time step
 c

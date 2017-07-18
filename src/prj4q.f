@@ -43,7 +43,7 @@ c Farzin Shakib, Spring 1989.
 c-----------------------------------------------------------------------
 c
         implicit double precision (a-h,o-z)
-        parameter (MAXPNT = 100)
+        parameter (MAXPNT = 8000000)
         include 'common.h'
 c
 	dimension    xl(*),    yl(*),    gxl(*),   gyl(*),   
@@ -140,7 +140,7 @@ c.... set the projection flag (if point is inside the element)
 c
 	do 800 k = 1, npgrd
 	  lpsoll(k) = 0
-	  if (abs(xi(k)).le.tol .and. abs(eta(k)).le.tol) lpsoll(k) = 1
+	  if (dabs(xi(k)).le.tol .and. dabs(eta(k)).le.tol) lpsoll(k) = 1
 800	continue
 c
 c.... return

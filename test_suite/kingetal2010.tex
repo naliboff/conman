@@ -1,0 +1,71 @@
+\documentclass[10pt]{article}
+\begin{document}
+\noindent\bf
+Testing results from ConMan on  soc.geos.vt.edu on  Fri Jul 14 11:29:25 EDT 2017 .
+Using compiler  gfortran with compiler flags  -O3.
+\begin{table}[h]
+\centering
+\begin{tabular} {| r c c c c c |} \hline 
+\multicolumn{1}{| c }{Problem} &
+\multicolumn{1}{ c }{V$_{rms}$} &
+\multicolumn{1}{ c }{Nu Bot} &
+\multicolumn{1}{ c }{Nu Top} &
+\multicolumn{1}{ c }{ave T} &
+\multicolumn{1}{ c |}{Vsurf} \\ 
+\hline 
+Blankenbach 1a explicit & 42.979 & 4.886 & 4.886 & 0.500 & 41.431 \\
+Blankenbach 1a Picard & 42.979 & 4.886 & 4.886 & 0.500 & 41.431 \\
+expected & 42.979 & 4.886 & 4.886 & 0.500 & 41.431 \\
+\hline 
+Blankenbach 1b explicit & 194.768 & 10.540 & 10.540 & 0.500 & 198.282 \\
+Blankenbach 1b picard & 194.768 & 10.540 & 10.540 & 0.500 & 198.282 \\
+expected & 194.768 & 10.540 & 10.540 & 0.500 & 198.282 \\
+\hline 
+Blankenbach 1c explicit & 846.728 & 22.017 & 22.017 & 0.500 & 884.520 \\
+Blankenbach 1c picard & 846.728 & 22.017 & 22.017 & 0.500 & 884.520 \\
+expected & 846.728 & 22.017 & 22.017 & 0.500 & 884.520 \\
+\hline 
+Blankenbach 2a explicit & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+Blankenbach 2a Picard & 493.067 & 10.076 & 10.071 & 0.741 & 98.760 \\
+expected & 493.067 & 10.076 & 10.076 & 0.740 & 98.761 \\
+\hline 
+EBA cv Di=0.25 explicit & 38.543 & 4.096 & 4.096 & 0.491 & 36.599 \\
+EBA cv Di=0.25 Picard & 38.543 & 4.096 & 4.096 & 0.491 & 36.599 \\
+expected & 38.543 & 4.096 & 4.096 & 0.491  & 36.599 \\
+\hline 
+EBA cv Di=1.0 explicit  & 24.242 & 2.194 & 2.194 & 0.467 & 22.242 \\
+EBA cv Di=1.0 Picard & 24.243 & 2.194 & 2.194 & 0.467 & 22.243 \\
+expected & 24.232 & 2.194 & 2.194 & 0.467  & 22.243 \\
+\hline 
+EBA td Di=0.25 explicit & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+EBA td Di=0.25 Picard & 374.401 & 7.629 & 7.617 & 0.692 & 81.796 \\
+expected & 374.400 & 7.630 & 7.630 & 0.692  & 81.790 \\
+\hline 
+TALA cv Di=0.25 explicit & 40.162 & 4.426 & 4.424 & 0.513 & 39.301 \\
+TALA cv Di=0.25 Picard & 40.163 & 4.426 & 4.425 & 0.513 & 39.301 \\
+expected & 40.200 & \null & 4.424 & 0.513 & 39.300 \\
+\hline 
+TALA td Di=0.25 explicit & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+TALA td Di=0.25 Picard & 383.222 & 7.813 & 7.740 & 0.706 & 82.928 \\
+expected & 383.220 & \null & 7.740 & 0.707  & 82.936 \\
+\hline 
+ALA cv Di=0.25 explicit & 40.043 & 4.414 & 4.415 & 0.515 & 38.837 \\
+ALA cv Di=0.25 Picard & 40.043 & 4.414 & 4.415 & 0.515 & 38.837 \\
+expected & 40.095 & 4.414 & 4.414 & 0.515 & 38.837 \\
+\hline 
+ALA td Di=0.25 explicit & 323.219 & 7.336 & 6.770 & 0.712 & 75.830 \\
+ALA td Di=0.25 Picard & 380.054 & 7.734 & 7.683 & 0.707 & 81.090 \\
+expected & 381.690 & 7.710 & 7.710 & 0.707  & 81.090 \\
+\hline 
+ALA cv Di=1.0 explicit & 24.982 & 2.472 & 2.473 & 0.510 & 24.401 \\
+ALA cv Di=1.0 Picard & 24.983 & 2.472 & 2.473 & 0.510 & 24.401 \\
+expected & 25.016 & 2.472 & 2.472 & 0.510  & 24.401 \\
+\hline 
+TALA cv Di=1.0 explicit  & 26.072 & 2.567 & 2.505 & 0.509 & 26.432 \\
+TALA cv Di=1.0 Picard & 26.072 & 2.567 & 2.505 & 0.509 & 26.432 \\
+expected & 26.100 & \null & 2.570 & 0.509  & 26.400 \\
+\hline 
+\end{tabular}
+\caption{Steady State, 2D, constant-viscosity convection in a 1 by 1 box Blankenbach benchmarks} 
+\end{table}
+\end{document}

@@ -1,0 +1,78 @@
+#!/bin/csh -f
+gmtset BASEMAP_TYPE FANCY DEGREE_FORMAT 0 GRID_CROSS_SIZE 0.00 HEADER_FONT_SIZE 24 LABEL_FONT_SIZE 24 ANOT_FONT_SIZE 24 PAGE_ORIENTATION PORTRAIT PAPER_MEDIA letter+
+
+# set to the size of the domain
+set opts = "-K -P -V -O"
+
+if ($#argv < 1) then
+   echo "You must supply one argument, plot_temp_GMT exiting."
+   echo " "
+   echo "syntax: plot_temp_GMT <file> "
+   echo "    where <file> is the temp.xxxx file from ConMan"
+   exit
+endif
+
+# find total number of elements in x and z
+set nelx = `awk 'NR==1 {print $2}' $1`
+set nelz = `awk 'NR==1 {print $3}' $1`
+echo $nelx, $nelz
+
+# find min and max x and z
+set xmax = `tail -1 $1 | awk '{print $2*1.0} '`
+set xmin = `awk 'NR==3 {print $2*1.0}' $1`
+set zmax = `tail -1 $1 | awk '{print $3*1.0}'`
+set zmin = `awk 'NR==3 {print $3*1.0}' $1`
+echo $zmin, $zmax, $xmin, $xmax
+
+# find total length in x and z directions
+set xtotal = `echo ' scale=9; ' $xmax - $xmin | bc ` 
+set ztotal = `echo ' scale=9; ' $zmax - $zmin | bc `
+
+set height = `echo ' scale=3; 16.0 * ' $ztotal / $xtotal | bc `
+set size = "-JX16.0/-$height"
+echo $height, $size
+
+# find increment for use with xyz2grd
+set ix = `echo ' scale=11; ' $xtotal / $nelx | bc `
+set iz = `echo ' scale=11; ' $ztotal / $nelz | bc `
+echo $ix, $iz
+
+awk '{if(NR>2) print ($2,1.0-$3,$6) }' $1 > temp.xyz
+awk '{if(NR>2) print ($2,1.0-$3,$6) }' str.1e6 > press.xyz
+
+set reg = "-R$xmin/$xmax/$zmin/$zmax"
+
+xyz2grd temp.xyz -Gtemp.grd $reg -I$ix/$iz -V
+xyz2grd press.xyz -Gpress.grd $reg -I$ix/$iz -V
+
+grd2cpt temp.grd -Chaxby -L0/1.1 -S0.0/1.1/0.1 > temp.cpt
+grd2cpt temp.grd -Cocean -L0/1. -S0.0/1.0/0.1 > temp.cpt
+grd2cpt temp.grd -Cseis -I -L0/1.0 -S0.0/1.0/0.2 > temp.cpt
+grd2cpt press.grd -Cseis -I -L-2000/2000.0 -S-2000.0/2000.0/500 > press.cpt
+grd2cpt temp.grd -Cgray -L0.05/0.95 -S0.05/0.95/0.1 > temp.cpt
+
+awk '{if(NR>2) print ($2,1.0-$3,$4) }' $1 > vx.xyz
+awk '{if(NR>2) print ($2,1.0-$3,$5) }' $1 > vz.xyz
+
+xyz2grd vx.xyz -Gvx.grd $reg -I$ix/$iz -V 
+xyz2grd vz.xyz -Gvz.grd $reg -I$ix/$iz -V 
+
+set ix2 = `echo ' scale=9; ' $ix \* 8.0 | bc `
+set iz2 = `echo ' scale=9; ' $iz \* 8.0 | bc `
+echo $ix2, $iz2
+grdsample vx.grd -Gvx1.grd -I$ix2/$iz2 -V -F
+grdsample vz.grd -Gvz1.grd -I$ix2/$iz2 -V -F
+
+set arrows = "-S1000. -Q0.01i/0.08i/0.06i -E -G0"
+
+set reg = "-R$xmin/$xmax/$zmin/$zmax"
+
+# for color
+pscontour temp.xyz $size -B.2:"Distance ":/.2:"Depth ":WSen $reg -Ctemp.cpt -X4.0 -Y6.0 -K -V -P -I > plot.ps
+#pscontour str.xyz $size -B.2:"Distance (km)":/.2:"Depth (km)":WSen $reg -Cstr.cpt -X4.0 -Y6.0 -K -V -P -I > plot.ps
+
+#pscontour temp.xyz $size $reg -Ctemp.cpt -X0.0 -Y0.0 -K -V -P -W8 -O >> plot.ps
+
+#grdvector vx1.grd vz1.grd $size $reg $arrows -X0.0 -Y0.0 $opts -V >> plot.ps
+
+psscale   -Ctemp.cpt -D7.5/-2.9/16.5/0.3h -V -P -O >> plot.ps

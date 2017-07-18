@@ -17,7 +17,7 @@ c
 c
 c.... deactivate above card(s) for single precision operation
 c
-      include '../common.h'
+      include 'common.h'
 c
       dimension temp(12,20), ninc(3), inc(3)
       dimension dest(ndest,1)

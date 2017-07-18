@@ -13,12 +13,12 @@ c.... deactivate above card(s) for single-precision operation
 c
       logical lzero
       dimension f(ndof,numnp), x(ndof,numnp), idv(ndof,numnp)
-c     dimension f(ndof,numnp)
-      common /const / zero  ,   pt25,     pt33,   pt5,     pt66,   one,
-     &               onept5 ,   two ,    three,  four,   sixten,  eps7
-      common /io    / iin  , igeom, iout, itsout, itout , imout , 
-     &                irsin, irsout
 
+        common /const /zero  , pt25,    pt33,   pt5,     pt66,   one,    
+     &                 onept5, two ,   three,  four,   sixten,  eps7
+        common /io    / iin,    igeom, iout , itsout , itout , imout, 
+     &                  irsin , irsout, icomp, igeoid
+c     &                , ivisc , ivt  ,  ivin  , ivout
 c
       call clear(f,numnp*ndof)
 c

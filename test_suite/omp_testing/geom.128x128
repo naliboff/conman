@@ -1,0 +1,26 @@
+coordinates (four corners)
+    1   4    0.0 0.0
+16513   1    1.0 0.0
+16641   1    1.0 1.0
+  129   1    0.0 1.0
+nelx xskip nelz zskip
+128      129   128  1
+ends with a row of zeros
+0      0     0.0 0.0
+velocity boundary conditions
+ends with a row of zeros
+   0   0     0.0 0.0
+temperature boundary conditions
+   1    2    1.0
+16513   1    1.0 
+nelx xskip nelz zskip
+128    129   0  0
+ends with a row of zeros
+0      0     0.0 0.0
+element connectivity
+elnum type matno n1 n2 n3 n4
+    1    1     1  1 130 131  2
+nelx elxskip nodexskip nelx elzskip nodezskip
+  128    128       129   128      1         1  
+ends with a row of zeros
+0  0  0  0  0  0  0

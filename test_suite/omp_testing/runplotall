@@ -1,0 +1,9 @@
+
+dirn='Slab_IW_0708_t.0006'
+times='xag'
+
+./plotallslab $times $dirn
+
+outps1=$dirn'.ps'
+mv plot_all.ps $outps1
+

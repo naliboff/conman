@@ -16,7 +16,7 @@ c
 c
 c.... deactivate above card(s) for single precision operation
 c
-      dimension iclr(1)
+      dimension iclr(*)
 c
       do 100 i = 1, n
         iclr(i) = 0
@@ -45,7 +45,7 @@ c
 c
 c.... deactivate above card(s) for single precision operation
 c
-      dimension idest(1), isourc(1)
+      dimension idest(*), isourc(*)
 c
       do 100 i = 1, n
         idest(i) = isourc(i)
